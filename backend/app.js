@@ -55,6 +55,14 @@ app.put('/api/books/:id', (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 });
 
+// requête DELETE
+
+app.delete('/api/books/:id', (req, res, next) => {
+  Thing.deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Objet supprimé !'}))
+    .catch(error => res.status(400).json({ error }));
+});
+
 //On exporte l'application
 
 module.exports = app;
