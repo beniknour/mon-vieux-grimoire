@@ -46,6 +46,15 @@ app.get('/api/books', (req, res, next) => {
   .then(things => res.status(200).json(things))
   .catch(error => res.status(400).json({ error }));
 });
+
+//requêtes PUT
+
+app.put('/api/books/:id', (req, res, next) => {
+  Thing.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+    .catch(error => res.status(400).json({ error }));
+});
+
 //On exporte l'application
 
 module.exports = app;

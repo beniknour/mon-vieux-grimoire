@@ -1,4 +1,5 @@
 const http = require('http');
+require('dotenv').config();
 
 //on importe l'application
 
