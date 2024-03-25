@@ -17,7 +17,8 @@ const normalizePort = val => {
   }
   return false;
 };
-const port = normalizePort(process.env.PORT || process.env.MONGODB_PORT);
+const port = normalizePort(process.env.MONGODB_PORT || 3000);
+
 
 app.set('port', port);
 

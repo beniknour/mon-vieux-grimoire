@@ -17,11 +17,12 @@ exports.createThing = (req, res, next) => {
     }
   ).catch(
     (error) => {
-      res.status(400).json({
+      res.status(404).json({
         error: error
       });
     }
   );
+
 };
 
 //requêtes PUT
@@ -68,4 +69,8 @@ exports.getAllThings = (req, res, next) => {
     Thing.find() //find() renvoye un tableau contenant tous les Things dans notre base de données
     .then(things => res.status(200).json(things))
     .catch(error => res.status(400).json({ error }));
+
+
 };
+
+

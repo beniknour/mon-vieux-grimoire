@@ -12,6 +12,10 @@ app.use(express.json());
 const booksRoutes = require('./routes/books');
 app.use('/api/books', booksRoutes);
 
+const userRoutes = require('./routes/user');
+app.use('/api/auth', userRoutes);
+
+
 //permet à l'application d'appeler l'api
 
 app.use((req, res, next) => {
