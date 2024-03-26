@@ -17,9 +17,9 @@ const normalizePort = val => {
   }
   return false;
 };
-const port = normalizePort(process.env.MONGODB_PORT || 3000);
+const port = normalizePort(process.env.PORT || process.env.DB_PORT);
 
-
+console.log(port);
 app.set('port', port);
 
 //errorHandler recherche les différentes erreurs et les gère de manière appropriée
@@ -56,3 +56,4 @@ server.on('listening', () => {
 });
 // met le serveur en ecoute sur le port défini
 server.listen(port);
+

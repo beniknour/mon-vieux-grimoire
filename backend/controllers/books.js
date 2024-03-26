@@ -1,5 +1,6 @@
 const Thing = require('../models/Thing');
 
+
 //requête POST
 exports.createThing = (req, res, next) => {
   const thing = new Thing({
@@ -69,8 +70,6 @@ exports.getAllThings = (req, res, next) => {
     Thing.find() //find() renvoye un tableau contenant tous les Things dans notre base de données
     .then(things => res.status(200).json(things))
     .catch(error => res.status(400).json({ error }));
-
-
 };
 
 

@@ -7,13 +7,16 @@ const app = express();
 //traite les données JSON
 app.use(express.json());
 
-//Routes
 
-const booksRoutes = require('./routes/books');
-app.use('/api/books', booksRoutes);
+//MongoDB
 
-const userRoutes = require('./routes/user');
-app.use('/api/auth', userRoutes);
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://user:user@cluster0.dx2diar.mongodb.net/?retryWrites=true&w=majority',
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
 //permet à l'application d'appeler l'api
@@ -25,16 +28,16 @@ app.use((req, res, next) => {
     next();
 });
 
+//Routes
+
+const booksRoutes = require('./routes/books');
+app.use('/api/books', booksRoutes);
+
+const userRoutes = require('./routes/user');
+app.use('/api/auth', userRoutes);
+
+
 //On exporte l'application
 
 module.exports = app;
 
-//MongoDB
-
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb+srv://user:user@cluster0.dx2diar.mongodb.net/?retryWrites=true&w=majority',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
