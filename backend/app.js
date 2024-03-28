@@ -7,6 +7,7 @@ const app = express();
 //traite les données JSON
 app.use(express.json());
 
+const path = require('path');
 
 //MongoDB
 
@@ -36,7 +37,7 @@ app.use('/api/books', booksRoutes);
 const userRoutes = require('./routes/user');
 app.use('/api/auth', userRoutes);
 
-
+app.use('/images', express.static(path.join(__dirname, 'images')));
 //On exporte l'application
 
 module.exports = app;
