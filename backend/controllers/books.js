@@ -3,7 +3,7 @@ const fs = require('fs'); // Interagit avec le système de fichiers
 
 //requête POST
 exports.createBook = (req, res, next) => {
-  const bookObject = JSON.parse(req.body.book);
+  const bookObject = JSON.parse(req.body.book);//extrait les données du livre
   delete bookObject._id;
   delete bookObject._userId;
   const book = new Book({
@@ -139,11 +139,11 @@ exports.addRating = (req, res, next) => {
             // Recalcule la note moyenne
             const totalRatings = bookRatings.length;
             const noteRating = bookRatings.reduce((sum, rating) => sum + rating.grade, 0);
-            const averageRatings = noteRating / totalRatings;
+            const averageRatings = Math.floor((noteRating / totalRatings) * 10) / 10;
 
             // Mise à jour de la note moyenne dans le livre
             book.averageRating = averageRatings;
-
+            
             // Sauvegarde
 
             book.save()

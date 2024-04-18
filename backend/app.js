@@ -8,12 +8,12 @@ const app = express();
 app.use(express.json());
 
 const path = require('path');
-
+require('dotenv').config();
 //MongoDB
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://user:user@cluster0.dx2diar.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.mongodb.net/?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

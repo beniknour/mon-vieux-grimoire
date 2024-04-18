@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     const filePath = req.file.path;
     // Redimensionne et convertit en WebP
     sharp(filePath)
-        .resize({ height: 260, width: 206 })
+        .resize({ height: 595, width: 463 })
         .webp({ quality: 90 })
         .toFile(filePath + '.webp', (err) => {
             if (err) {
