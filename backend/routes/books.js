@@ -7,6 +7,7 @@ const booksCtrl = require('../controllers/books');
 const modifyFile = require('../middleware/sharp');
 const typeFile = require('../middleware/type-file');
 
+
 router.get('/bestrating', booksCtrl.bestRating);
 router.get('/:id', booksCtrl.getOneBook); 
 router.get('/', booksCtrl.getAllBooks);
